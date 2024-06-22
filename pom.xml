@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>es.imh</groupId>
+        <artifactId>imh-lib-microservices</artifactId>
+        <version>1.0.0</version>
+        <relativePath/>
+    </parent>
+
+
+    <groupId>es.imh</groupId>
+    <artifactId>imh-documentacion</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <imh.lib.test.version>1.0.0</imh.lib.test.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>es.imh</groupId>
+            <artifactId>imh-lib-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>es.imh</groupId>
+            <artifactId>imh-lib-test</artifactId>
+            <version>${imh.lib.test.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-openapi-contract-for-client-documentacion</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/rest/documentacion.yaml
+                            </inputSpec>
+                            <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+                            <generateApiDocumentation>true</generateApiDocumentation>
+                            <generateApiTests>true</generateApiTests>
+                            <generateModelTests>true</generateModelTests>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <configOptions>
+                                <basePackage>es.imh.documentacion</basePackage>
+                                <modelPackage>es.imh.documentacion.api.dto</modelPackage>
+                                <apiPackage>es.imh.documentacion.api</apiPackage>
+                                <configPackage>es.imh.documentacion.api.config</configPackage>
+                                <sourceFolder>src/main/java</sourceFolder>
+                                <dateLibrary>java21</dateLibrary>
+                                <interfaceOnly>true</interfaceOnly>
+                                <useNullForUnknownEnumValue>true</useNullForUnknownEnumValue>
+                                <useSpringBoot3>true</useSpringBoot3>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>es/imh/**/api/**</exclude>
+                        <exclude>es/imh/**/adapter/**</exclude>
+                        <exclude>es/imh/documentacion/Application.class</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
