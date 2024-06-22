@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: Economy API
+  description: API documentation for Economy microservice.
+  version: 1.0.0
+  contact:
+    name: Stat Plans
+    email: statplans@yahoo.es
+    url: https://www.statplans.es/
+servers:
+  - url: '/economia'
+tags:
+  - name: Cuenta
+    description: Gestión de las diferentes cuentas bancarias.
+paths:
+  /cuentas:
+    $ref: "./cuentas/cuentas.yaml"
+components:
+  schemas:
+    CodCuenta:
+      $ref: 'schemas.yaml#/CodCuenta'
+    Iban:
+      $ref: 'schemas.yaml#/Iban'
+    PostCuentaRequest:
+      $ref: './cuentas/cuentaRequest.yaml#/PostCuentaRequest'
+    PostCuentaResponse:
+      $ref: './cuentas/cuentaResponse.yaml#/PostCuentaResponse'

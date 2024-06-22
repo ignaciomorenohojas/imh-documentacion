@@ -1,0 +1,16 @@
+PostCuentaRequest:
+  required:
+    - codigo
+    - nombre
+    - iban
+  description: Data for create a  cuenta item.
+  type: object
+  properties:
+    codigo:
+      $ref: '../schemas.yaml#/CodCuenta'
+    nombre:
+        type: string
+        description: Name of the account holder.
+        example: 'Cuenta principal'
+    iban:
+      $ref: '../schemas.yaml#/Iban'

@@ -1,0 +1,12 @@
+PostCuentaResponse:
+  type: object
+  description: Object representing a cuenta item.
+  properties:
+    codigo:
+      $ref: '../schemas.yaml#/CodCuenta'
+    nombre:
+      type: string
+      description: Name of the account holder.
+      example: 'Cuenta principal'
+    iban:
+      $ref: '../schemas.yaml#/Iban'

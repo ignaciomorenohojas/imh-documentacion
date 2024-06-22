@@ -17,6 +17,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <imh.lib.core.version>1.0.0</imh.lib.core.version>
         <imh.lib.test.version>1.0.0</imh.lib.test.version>
     </properties>
 
@@ -24,6 +25,7 @@
         <dependency>
             <groupId>es.imh</groupId>
             <artifactId>imh-lib-core</artifactId>
+            <version>${imh.lib.core.version}</version>
         </dependency>
         <dependency>
             <groupId>es.imh</groupId>
