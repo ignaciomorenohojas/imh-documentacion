@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Documentación API
+  description: API documentation for Documentación microservice.
+  version: 1.0.0
+  contact:
+    name: Ignacio Moreno Hojas
+    email: ignacio@morenobarroso.es
+    url: https://www.statdeveloper.com/
+servers:
+  - url: '/documentacion'
+tags:
+  - name: Documentos
+    description: Gestión de los diferentes documentos.
+paths:
+  /documentos:
+    $ref: "./documentos/documentos.yaml"
+components:
+  schemas:
+    NombreDocumento:
+      $ref: 'schemas.yaml#/nombreDocumento'
+    DescripcionDocumento:
+      $ref: 'schemas.yaml#/descripcionDocumento'

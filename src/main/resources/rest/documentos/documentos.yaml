@@ -1,0 +1,44 @@
+post:
+  tags:
+    - Documentos
+  summary: Crea un documento.
+  operationId: creaDocumento
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            nombreDocumento:
+              $ref: '../schemas.yaml#/nombreDocumento'
+            descripcionDocumento:
+              $ref: '../schemas.yaml#/descripcionDocumento'
+  responses:
+    201:
+      description: Documento creado, la respuesta devuelve el nuevo documento.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              idDocumento:
+                $ref: '../schemas.yaml#/idDocumento'
+              nombreDocumento:
+                $ref: '../schemas.yaml#/nombreDocumento'
+              descripcionDocumento:
+                $ref: '../schemas.yaml#/descripcionDocumento'
+    500:
+      description: service error
+      content:
+        application/json:
+          example:
+            apiVersion: "1.5.0-SNAPSHOT"
+            timestamp: "2024-10-01T12:29:52.5956431Z"
+            status: "500"
+            logRef: "6527fbfe-261a-47cb-b10a-e0d63ca47fe9"
+            path: "/documentacion/documentos"
+            exception: "ServiceException"
+            code: "10"
+            message: "10: Process error"
+            messageKey: "null"

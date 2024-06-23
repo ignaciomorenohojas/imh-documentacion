@@ -17,7 +17,7 @@ Gestión de la documentación de imh.
 
 ## Descripción
 
-Aplicación rest en arquitectura hexagonal () para la gestión de documentación de Ignacio Moreno Hojas.
+Aplicación rest en arquitectura hexagonal (puerto s y adaptadores) para la gestión de documentación de Ignacio Moreno Hojas.
 
 ## Características
 

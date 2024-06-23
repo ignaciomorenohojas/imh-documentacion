@@ -1,1 +1,1 @@
-INSERT INTO cuentas (cod_cuenta, nombre, iban) VALUES ('CUENTA1', 'Cuenta1', 'ES12345678901234567890');
+INSERT INTO documentos (id, nombre, descripcion) VALUES (1, 'Documento1', 'Descripción del documento 1');

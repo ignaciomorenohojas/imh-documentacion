@@ -1,11 +1,10 @@
 package es.imh.documentacion.infrastructure.controller;
 
-import es.statplans.economia.Application;
-import es.statplans.economia.domain.model.Cuenta;
+import es.imh.documentacion.Application;
+import es.imh.documentacion.domain.model.Documento;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -20,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CuentaControllerTest {
+class DocumentoControllerTest {
     @LocalServerPort
     private int port;
 
@@ -29,22 +28,21 @@ class CuentaControllerTest {
     HttpHeaders headers = new HttpHeaders();
 
     @Test
-    void testSaveCuenta() throws JSONException {
+    void testSaveDocumento() throws JSONException {
 
-        Cuenta cuenta = Cuenta.builder()
-                .codigo("CUENTA12345")
-                .nombre("Cuenta1")
-                .iban("ES000000000000")
+        Documento documento = Documento.builder()
+                .nombre("Documento1")
+                .descripcion("Descripción del documento 1")
                 .build();
 
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<Cuenta> entity = new HttpEntity<>(cuenta, headers);
+        HttpEntity<Documento> entity = new HttpEntity<>(documento, headers);
 
         ResponseEntity<String> response = restTemplate.exchange(
-                createURLWithPort("/cuentas"),
+                createURLWithPort("/documentacion/documentos"),
                 HttpMethod.POST, entity, String.class);
 
-        assertEquals("{\"codigo\":\"CUENTA12345\",\"nombre\":\"Cuenta1\",\"iban\":\"ES000000000000\"}", response.getBody());
+        assertEquals("{\"id\":\"1\",\"nombre\":\"Documento1\",\"iban\":\"Descripción del documento 1\"}", response.getBody());
     }
 
     private String createURLWithPort(String uri) {

@@ -13,13 +13,13 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "cuentas")
-public class CuentaEntity {
+@Table(name = "documentos")
+public class DocumentoEntity {
 
         @Id
-        @Column(name = "cod_cuenta",unique=true, nullable = false)
-        String codigo;
+        @Column(name = "id",unique=true, nullable = false)
+        Integer id;
         String nombre;
-        String iban;
+        String descripcion;
 
 }

@@ -10,9 +10,8 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode
-public class Cuenta {
+public class Documento {
 
-        String codigo;
         String nombre;
-        String iban;
+        String descripcion;
 }
